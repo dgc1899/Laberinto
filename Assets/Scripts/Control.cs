@@ -8,7 +8,7 @@ public class Control : MonoBehaviour
     private Vector2 touchPosition;
     private Quaternion rotationX, rotationZ;
 
-    private float tiltSpeedModifier = 0.1f;
+    private float tiltSpeedModifier = 0.02f;
 
     // Start is called before the first frame update
     void Start()
