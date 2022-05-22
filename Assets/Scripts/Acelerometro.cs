@@ -5,7 +5,7 @@ using UnityEngine;
 public class Acelerometro : MonoBehaviour
 {
     private Rigidbody rb;
-    private float velocidad = 10;
+    private float velocidad = 15f;
 
 
     // Start is called before the first frame update
