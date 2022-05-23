@@ -12,9 +12,14 @@ public class Juego : MonoBehaviour
     static bool move;
     static bool youWin;
 
+    [SerializeField]
+    GameObject TextoGanador;
+
     // Start is called before the first frame update
     void Start()
     {
+        TextoGanador.gameObject.SetActive(false);
+
         rb = GetComponent<Rigidbody>();
 
         youWin = false;
@@ -28,12 +33,13 @@ public class Juego : MonoBehaviour
 
         if (isDead == true)
         {
-            rb.velocity = new Vector3(0, 0, 0);
-            Invoke ("RestartScene", 1f);
+            rb.position = new Vector3(-8.5f, 1f, 7.96f);
+            isDead = false;
         }
 
         if(youWin == true)
         {
+            TextoGanador.gameObject.SetActive(true);
             move = false;
             Invoke("RestartScene", 2f);
         }
@@ -61,6 +67,6 @@ public class Juego : MonoBehaviour
 
     void RestartScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Nivel_1");
     }
 }
