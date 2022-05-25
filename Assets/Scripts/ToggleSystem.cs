@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 
 public class ToggleSystem : MonoBehaviour
@@ -17,6 +18,18 @@ public class ToggleSystem : MonoBehaviour
     public void Submit()
     {
         Toggle toggle = toggleGroup.ActiveToggles().FirstOrDefault();
-        Debug.Log(toggle.name);
+        if (toggle.name == "ToggleNivel1")
+        {
+            SceneManager.LoadScene("Nivel_1");
+        }
+        if (toggle.name == "ToggleNivel2")
+        {
+            SceneManager.LoadScene("Nivel_2");
+        }
+        if (toggle.name == "ToggleNivel3")
+        {
+            SceneManager.LoadScene("Nivel_3");
+        }
+
     }
 }
