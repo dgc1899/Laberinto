@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Juego : MonoBehaviour
 {
@@ -14,6 +15,21 @@ public class Juego : MonoBehaviour
 
     [SerializeField]
     GameObject TextoGanador;
+
+    public Text Tiempo;
+    public Text Ganar;
+    public int contador = 0;
+
+    private void Awake()
+    {
+        InvokeRepeating("Timer", 0f, 1f);
+    }
+
+    public void Timer()
+    {
+        contador++;
+        Tiempo.text = contador.ToString();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +58,9 @@ public class Juego : MonoBehaviour
             TextoGanador.gameObject.SetActive(true);
             move = false;
             Invoke("RestartScene", 2f);
+            CancelInvoke("Timer");
+            Ganar.text = "Felicidades, terminaste con un tiempo de: " + contador.ToString() + " seg";
+            Debug.Log(contador);
         }
     }
 
