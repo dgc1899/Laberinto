@@ -60,7 +60,6 @@ public class Juego : MonoBehaviour
             Invoke("RestartScene", 2f);
             CancelInvoke("Timer");
             Ganar.text = "Felicidades, terminaste con un tiempo de: " + contador.ToString() + " seg";
-            Debug.Log(contador);
         }
     }
 
