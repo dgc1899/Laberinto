@@ -14,15 +14,15 @@ public class Juego : MonoBehaviour
     static bool youWin;
 
     [SerializeField]
-    GameObject TextoGanador;
+    public GameObject btnP;
 
     public GameObject FinUI;
 
     public Text Tiempo;
     public Text Ganar;
 
-    //public Text titulo;
-    //public Text segundos;
+    public Text G_P;
+    public Text segundos;
 
     public int contador = 0;
     public int contador2 = 0;
@@ -42,7 +42,6 @@ public class Juego : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TextoGanador.gameObject.SetActive(false);
 
         rb = GetComponent<Rigidbody>();
 
@@ -64,19 +63,25 @@ public class Juego : MonoBehaviour
             if (contador2 == 3)
             {
                 move = false;
-                SceneManager.LoadScene("MenuJugar");
-                Debug.Log("Se te acabaron la vidas");
+                FinUI.gameObject.SetActive(true);
+                CancelInvoke("Timer");
+                G_P.text = "Perdiste";
+                btnP.SetActive(false);
+                Tiempo.text = "";
+                segundos.text = contador.ToString() + " segundos";
+                Invoke("RegresarMenu", 3f);
             }
         }
 
         if(youWin == true)
         {
-            //TextoGanador.gameObject.SetActive(true);
             FinUI.gameObject.SetActive(true);
-            //titulo.text = "Final del juego";
-            //segundos.text = contador.ToString() + " segundos";
+            G_P.text = "Ganaste";
+            segundos.text = contador.ToString() + " segundos";
             move = false;
-            //Invoke("RestartScene", 2f);
+            btnP.SetActive(false);
+            Tiempo.text = "";
+            Invoke("RegresarMenu", 3f);
             CancelInvoke("Timer");
 
             if (contador <= 15)
@@ -91,7 +96,6 @@ public class Juego : MonoBehaviour
             {
                 Debug.Log("1 estrella");
             }
-            //Ganar.text = "Felicidades, terminaste con un tiempo de: " + contador.ToString() + " seg";
         }
     }
 
@@ -115,8 +119,8 @@ public class Juego : MonoBehaviour
         youWin = true;
     }
 
-    void RestartScene()
+    void RegresarMenu()
     {
-        SceneManager.LoadScene("Nivel_1");
+        SceneManager.LoadScene("MenuJugar");
     }
 }
