@@ -9,7 +9,6 @@ public class Pausar : MonoBehaviour
   public void Pause()
   {
         MenuPausa.JuegoPausado = true;
-        btnP.SetActive(false);
         Debug.Log("Pausa");
   }
 }

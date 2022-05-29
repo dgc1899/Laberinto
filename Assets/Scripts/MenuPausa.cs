@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuPausa : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MenuPausa : MonoBehaviour
     {
         if (JuegoPausado == true)
         {
+            btnP.SetActive(false);
             if (JuegoPausado)
             {
                 Pausa();
@@ -40,7 +42,17 @@ public class MenuPausa : MonoBehaviour
 
     public void CargarMenu()
     {
+        JuegoPausado = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MenuJugar");
         Debug.Log("Menú...");
+    }
+
+    public void Reiniciar()
+    {
+        JuegoPausado = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Nivel_1");
     }
 
     public void MuteMusic()
