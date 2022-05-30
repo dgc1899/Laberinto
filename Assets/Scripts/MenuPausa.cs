@@ -57,6 +57,13 @@ public class MenuPausa : MonoBehaviour
 
     public void MuteMusic()
     {
-        Debug.Log("Música...");
+        if (AudioListener.volume > 0)
+        {
+            AudioListener.volume = 0;
+        }
+        else if (AudioListener.volume == 0)
+        {
+            AudioListener.volume = 1f;
+        }
     }
 }
