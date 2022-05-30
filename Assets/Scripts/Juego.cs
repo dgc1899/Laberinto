@@ -16,6 +16,16 @@ public class Juego : MonoBehaviour
     [SerializeField]
     public GameObject btnP;
 
+    public GameObject T1;
+    public GameObject T2;
+    public GameObject T3;
+    public GameObject TV1;
+    public GameObject TV2;
+    public GameObject TV3;
+    public GameObject C1;
+    public GameObject C2;
+    public GameObject C3;
+
     public GameObject FinUI;
 
     public Text Tiempo;
@@ -60,12 +70,31 @@ public class Juego : MonoBehaviour
             isDead = false;
 
             contador2++;
-            if (contador2 == 3)
+
+            if (contador2 == 1)
             {
+                C3.gameObject.SetActive(false);
+            }
+            else if(contador2 == 2)
+            {
+                C2.gameObject.SetActive(false);
+            }
+            else if (contador2 == 3)
+            {
+                C3.gameObject.SetActive(false);
+
+                T1.gameObject.SetActive(false);
+                T2.gameObject.SetActive(false);
+                T3.gameObject.SetActive(false);
+
+                TV1.gameObject.SetActive(true);
+                TV2.gameObject.SetActive(true);
+                TV3.gameObject.SetActive(true);
+
                 move = false;
                 FinUI.gameObject.SetActive(true);
                 CancelInvoke("Timer");
-                G_P.text = "Perdiste";
+                G_P.text = "Mejor suerte para la próxima";
                 btnP.SetActive(false);
                 Tiempo.text = "";
                 segundos.text = contador.ToString() + " segundos";
@@ -76,7 +105,7 @@ public class Juego : MonoBehaviour
         if(youWin == true)
         {
             FinUI.gameObject.SetActive(true);
-            G_P.text = "Ganaste";
+            G_P.text = "Terminaste el nivel, felicidades";
             segundos.text = contador.ToString() + " segundos";
             move = false;
             btnP.SetActive(false);
@@ -86,15 +115,35 @@ public class Juego : MonoBehaviour
 
             if (contador <= 15)
             {
-                Debug.Log("3 estrellas");
+                T1.gameObject.SetActive(true);
+                T2.gameObject.SetActive(true);
+                T3.gameObject.SetActive(true);
+
+                TV1.gameObject.SetActive(false);
+                TV2.gameObject.SetActive(false);
+                TV3.gameObject.SetActive(false);
+
             }
             else if(contador <= 20)
             {
-                Debug.Log("2 estrellas");
+                TV1.gameObject.SetActive(true);
+                TV2.gameObject.SetActive(true);
+                TV3.gameObject.SetActive(false);
+
+                TV1.gameObject.SetActive(false);
+                TV2.gameObject.SetActive(false);
+                TV3.gameObject.SetActive(true);
             }
             else
             {
-                Debug.Log("1 estrella");
+                T1.gameObject.SetActive(true);
+                T2.gameObject.SetActive(false);
+                T3.gameObject.SetActive(false);
+
+                TV1.gameObject.SetActive(false);
+                TV2.gameObject.SetActive(true);
+                TV3.gameObject.SetActive(true);
+
             }
         }
     }

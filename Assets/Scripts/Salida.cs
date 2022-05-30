@@ -7,6 +7,5 @@ public class Salida : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Juego.setYouWinToTrue();
-        Debug.Log("Ganaste, pa");
     }
 }

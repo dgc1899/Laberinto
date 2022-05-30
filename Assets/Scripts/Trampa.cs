@@ -7,6 +7,5 @@ public class Trampa : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Juego.setIsDeadTrue();
-        Debug.Log("Perdiste, pa");
     }
 }
